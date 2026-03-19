@@ -1,0 +1,34 @@
+/*
+  Layer ownership
+  ───────────────
+  .bee        → GSAP x/y  (scroll positioning)
+  .beeFloat   → CSS idle float + slight sway
+  SVG inside  → all visual structure + animateTransform for wing flap
+*/
+
+/* ─── Outer shell — GSAP owns transforms here ──────────── */
+.bee {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 160px;
+  height: 200px;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* ─── Inner shell — idle float animation ───────────────── */
+.beeFloat {
+  width: 100%;
+  height: 100%;
+  animation: float 3.6s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes float {
+  0%   { transform: translateY(0px)   rotate(0deg);   }
+  28%  { transform: translateY(-11px) rotate(1.6deg); }
+  62%  { transform: translateY(-5px)  rotate(-1deg);  }
+  100% { transform: translateY(0px)   rotate(0deg);   }
+}
