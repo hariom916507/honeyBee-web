@@ -1,19 +1,23 @@
 import Hero from './sections/Hero'
-import StepOne from './sections/StepOne'
-import FlowerGallery from './sections/FlowerGallery'
-import StepTwo from './sections/StepTwo'
-import StepThree from './sections/StepThree'
-import Final from './sections/Final'
+import OurHoney from './sections/OurHoney'
+import ProducerExcellence from './sections/ProducerExcellence'
+import EthicsStewardship from './sections/EthicsStewardship'
+import FromHiveToHome from './sections/FromHiveToHome'
+import GiftingBulk from './sections/GiftingBulk'
+import FAQ from './sections/FAQ'
+import GetInTouch from './sections/GetInTouch'
 
 export default function Home() {
   return (
     <main>
       <Hero />
-      <StepOne />
-      <FlowerGallery />
-      <StepTwo />
-      <StepThree />
-      <Final />
+      <OurHoney />
+      <ProducerExcellence />
+      <EthicsStewardship />
+      <FromHiveToHome />
+      <GiftingBulk />
+      <FAQ />
+      <GetInTouch />
     </main>
   )
 }

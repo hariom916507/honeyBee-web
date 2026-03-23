@@ -1,0 +1,415 @@
+/* ══════════════════════════════════════════════
+   Bee Ethics & Stewardship — Premium Light
+   ══════════════════════════════════════════════ */
+
+.ethics {
+  position: relative;
+  min-height: 100vh;
+  padding: 130px 2rem 140px;
+  background: linear-gradient(160deg, #fffdf5 0%, #fef8e4 45%, #fffcf0 100%);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Honeycomb bg ── */
+.hcBg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* ── Ambient blobs ── */
+.blob1 {
+  position: absolute;
+  top: -160px;
+  right: -120px;
+  width: 650px;
+  height: 650px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(240,165,0,0.09) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.blob2 {
+  position: absolute;
+  bottom: -180px;
+  left: -100px;
+  width: 550px;
+  height: 550px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(240,165,0,0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+/* ── Floating decorative hexagons ── */
+.floatHex {
+  position: absolute;
+  pointer-events: none;
+}
+
+.floatHexA {
+  width: 380px;
+  top: -40px;
+  right: -60px;
+  animation: drift 16s ease-in-out infinite alternate;
+}
+
+.floatHexB {
+  width: 220px;
+  bottom: 80px;
+  left: -40px;
+  animation: drift 20s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes drift {
+  from { transform: translateY(0) rotate(0deg); }
+  to   { transform: translateY(-22px) rotate(5deg); }
+}
+
+/* ── Inner ── */
+.inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* ── Header row ── */
+.headerRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem 6rem;
+  align-items: end;
+  margin-bottom: 56px;
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Eyebrow */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--honey-dark);
+}
+
+.eyebrowDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--honey);
+  box-shadow: 0 0 0 3px rgba(240,165,0,0.22);
+  animation: breathe 2.4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes breathe {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(240,165,0,0.22); }
+  50%       { box-shadow: 0 0 0 8px rgba(240,165,0,0.08); }
+}
+
+/* Title */
+.title {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 5.5vw, 5rem);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  overflow: hidden;
+}
+
+.titleLine1 {
+  display: block;
+  color: var(--brown);
+}
+
+.titleLine2 {
+  display: block;
+  font-style: italic;
+  background: linear-gradient(120deg, var(--honey-dark) 0%, var(--honey) 50%, #e8950a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Right header */
+.headerRight {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: clamp(0.9rem, 1.35vw, 1rem);
+  color: var(--text-secondary);
+  line-height: 1.85;
+}
+
+/* Badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 1rem 1.5rem;
+  background: white;
+  border: 1px solid rgba(240,165,0,0.2);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(180,100,0,0.07);
+  width: fit-content;
+}
+
+.badgeNum {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 400;
+  color: var(--honey-dark);
+  line-height: 1;
+}
+
+.badgeLabel {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* ── Divider ── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 56px;
+}
+
+.dividerLine {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200,140,0,0.25), transparent);
+}
+
+.dividerHex {
+  width: 24px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+/* ── Grid ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+/* ── Card ── */
+.card {
+  position: relative;
+  background: white;
+  border: 1px solid rgba(200,140,0,0.1);
+  border-radius: 22px;
+  padding: 2.25rem 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+  box-shadow:
+    0 2px 8px rgba(180,100,0,0.04),
+    0 8px 32px rgba(180,100,0,0.06);
+  transition:
+    transform 0.4s cubic-bezier(0.34,1.56,0.64,1),
+    box-shadow 0.4s ease,
+    border-color 0.35s ease;
+  cursor: default;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(200,140,0,0.3);
+  box-shadow:
+    0 6px 16px rgba(180,100,0,0.06),
+    0 24px 56px rgba(180,100,0,0.12);
+}
+
+/* Watermark number */
+.waterNum {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  font-weight: 400;
+  color: rgba(200,140,0,0.1);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  transition: color 0.35s ease;
+}
+
+.card:hover .waterNum {
+  color: rgba(200,140,0,0.18);
+}
+
+/* Icon */
+.iconBox {
+  position: relative;
+  width: 80px;
+  height: 92px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+.card:hover .iconBox {
+  transform: scale(1.1) rotate(6deg);
+}
+
+.iconHexSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: filter 0.35s ease;
+}
+
+.card:hover .iconHexSvg {
+  filter: drop-shadow(0 4px 14px rgba(200,130,0,0.22));
+}
+
+.iconEl {
+  position: relative;
+  z-index: 1;
+  color: var(--honey-dark);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconEl svg {
+  width: 28px;
+  height: 28px;
+  transition: filter 0.35s ease;
+}
+
+.card:hover .iconEl {
+  color: #b87000;
+}
+
+/* Text */
+.cardTitle {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--brown);
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+}
+
+.cardDesc {
+  font-size: 0.87rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+/* Hover bar */
+.hoverBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--honey-dark), var(--honey), var(--honey-light));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+  border-radius: 0 0 22px 22px;
+}
+
+.card:hover .hoverBar {
+  transform: scaleX(1);
+}
+
+/* ── Quote strip ── */
+.quote {
+  margin-top: 72px;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 2.25rem 2.5rem;
+  background: white;
+  border: 1px solid rgba(200,140,0,0.12);
+  border-radius: 20px;
+  box-shadow: 0 4px 24px rgba(180,100,0,0.06);
+}
+
+.quoteIcon {
+  width: 32px;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.quoteText {
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  font-style: italic;
+  color: var(--brown);
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+}
+
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .headerRow {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .floatHexA {
+    width: 260px;
+    right: -30px;
+  }
+}
+
+@media (max-width: 640px) {
+  .ethics {
+    padding: 90px 1.25rem 100px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .floatHexA,
+  .floatHexB {
+    display: none;
+  }
+
+  .quote {
+    flex-direction: column;
+    padding: 1.75rem 1.5rem;
+  }
+}

@@ -40,8 +40,8 @@ import { useEffect } from 'react'
 import { gsap, ScrollTrigger } from '../lib/gsap'
 
 // ─── Constants ───────────────────────────────────────────────
-const BEE_W        = 160  // must match Bee.module.css width
-const BEE_H        = 200  // must match Bee.module.css height
+const BEE_W        = 240  // must match Bee.module.css width
+const BEE_H        = 300  // must match Bee.module.css height
 const HALF_W       = BEE_W / 2  // 80
 const HALF_H       = BEE_H / 2  // 100
 const MAX_BANK     = 24   // maximum tilt angle in degrees
@@ -104,44 +104,44 @@ function bankAngle(x0, y0, x1, y1, vw) {
 //
 const WAYPOINT_CONFIG = [
   {
-    // Hero — above the h1, slightly right of center
+    // Hero — center top
     sectionId: 'hero',
-    getTarget: (vw, vh, titleY) => ({
-      x: vw * 0.55,
-      y: titleY - 90,
-    }),
+    getTarget: (vw, vh) => ({ x: vw * 0.50, y: vh * 0.14 }),
   },
   {
-    // StepOne — left of the centered content block
-    sectionId: 'collecting',
-    getTarget: (vw, vh, titleY) => ({
-      x: vw * 0.10,
-      y: titleY - 20,
-    }),
+    // Our Honey — right bottom
+    sectionId: 'our-honey',
+    getTarget: (vw, vh) => ({ x: vw * 0.82, y: vh * 0.70 }),
   },
   {
-    // StepTwo — right of the centered content block
-    sectionId: 'processing',
-    getTarget: (vw, vh, titleY) => ({
-      x: vw * 0.88,
-      y: titleY - 20,
-    }),
+    // Producer Excellence — left top
+    sectionId: 'excellence',
+    getTarget: (vw, vh) => ({ x: vw * 0.10, y: vh * 0.16 }),
   },
   {
-    // StepThree — above centered title
-    sectionId: 'storage',
-    getTarget: (vw, vh, titleY) => ({
-      x: vw * 0.52,
-      y: titleY - 80,
-    }),
+    // Ethics & Stewardship — center bottom
+    sectionId: 'ethics',
+    getTarget: (vw, vh) => ({ x: vw * 0.48, y: vh * 0.72 }),
   },
   {
-    // Final — beside the "Pure Honey" title, slightly right
-    sectionId: 'final',
-    getTarget: (vw, vh, titleY) => ({
-      x: vw * 0.66,
-      y: titleY - 50,
-    }),
+    // From Hive to Home — right top
+    sectionId: 'hive-to-home',
+    getTarget: (vw, vh) => ({ x: vw * 0.80, y: vh * 0.15 }),
+  },
+  {
+    // Gifting & Bulk — left bottom
+    sectionId: 'gifting',
+    getTarget: (vw, vh) => ({ x: vw * 0.10, y: vh * 0.68 }),
+  },
+  {
+    // FAQ — center middle
+    sectionId: 'faq',
+    getTarget: (vw, vh) => ({ x: vw * 0.46, y: vh * 0.40 }),
+  },
+  {
+    // Get in Touch — right center
+    sectionId: 'contact',
+    getTarget: (vw, vh) => ({ x: vw * 0.80, y: vh * 0.42 }),
   },
 ]
 
@@ -160,18 +160,11 @@ export default function BeeScrollAnimation() {
 
     // ── Measure each section and derive waypoints ─────────────
     const waypoints = WAYPOINT_CONFIG.map(({ sectionId, getTarget }) => {
-      const section  = document.getElementById(sectionId)
-      const titleEl  = section?.querySelector('h1, h2')
-
-      if (!section || !titleEl) return null
+      const section = document.getElementById(sectionId)
+      if (!section) return null
 
       const sectionDocTop = getDocumentTop(section)
-      const titleDocTop   = getDocumentTop(titleEl)
-
-      // Title's viewport Y when this section is fully in view
-      const titleViewportY = titleDocTop - sectionDocTop + titleEl.offsetHeight / 2
-
-      const { x: targetX, y: targetY } = getTarget(vw, vh, titleViewportY)
+      const { x: targetX, y: targetY } = getTarget(vw, vh)
 
       return {
         ...center(targetX, targetY),

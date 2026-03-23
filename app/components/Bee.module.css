@@ -3,7 +3,7 @@
   ───────────────
   .bee        → GSAP x/y  (scroll positioning)
   .beeFloat   → CSS idle float + slight sway
-  SVG inside  → all visual structure + animateTransform for wing flap
+  .beeVideo   → video fill + mix-blend-mode for background removal
 */
 
 /* ─── Outer shell — GSAP owns transforms here ──────────── */
@@ -11,9 +11,9 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;
-  width: 160px;
-  height: 200px;
+  z-index: 210;
+  width: 240px;
+  height: 300px;
   pointer-events: none;
   will-change: transform;
 }
@@ -24,6 +24,14 @@
   height: 100%;
   animation: float 3.6s ease-in-out infinite;
   will-change: transform;
+}
+
+/* ─── Video/Canvas — fills container, background removed via pixel processing ─ */
+.beeVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 @keyframes float {
