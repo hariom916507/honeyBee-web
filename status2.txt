@@ -1,0 +1,50 @@
+﻿ M .next/build-manifest.json
+ M .next/cache/webpack/client-development/0.pack.gz
+ M .next/cache/webpack/client-development/1.pack.gz
+ M .next/cache/webpack/client-development/2.pack.gz
+ M .next/cache/webpack/client-development/3.pack.gz
+ M .next/cache/webpack/client-development/4.pack.gz
+ M .next/cache/webpack/client-development/5.pack.gz
+ M .next/cache/webpack/client-development/6.pack.gz
+ M .next/cache/webpack/client-development/7.pack.gz
+ M .next/cache/webpack/client-development/8.pack.gz
+ M .next/cache/webpack/client-development/index.pack.gz
+ M .next/cache/webpack/client-development/index.pack.gz.old
+ M .next/cache/webpack/server-development/0.pack.gz
+ M .next/cache/webpack/server-development/2.pack.gz
+ M .next/cache/webpack/server-development/3.pack.gz
+ M .next/cache/webpack/server-development/4.pack.gz
+ M .next/cache/webpack/server-development/5.pack.gz
+ M .next/cache/webpack/server-development/6.pack.gz
+ M .next/cache/webpack/server-development/7.pack.gz
+ M .next/cache/webpack/server-development/index.pack.gz
+ M .next/cache/webpack/server-development/index.pack.gz.old
+ M .next/prerender-manifest.json
+ M .next/react-loadable-manifest.json
+ M .next/server/app/page.js
+ M .next/server/middleware-build-manifest.js
+ M .next/server/middleware-react-loadable-manifest.js
+ M .next/server/pages-manifest.json
+ M .next/server/vendor-chunks/@swc.js
+ M .next/server/vendor-chunks/next.js
+ M .next/server/webpack-runtime.js
+ M .next/static/chunks/app/layout.js
+ M .next/static/chunks/app/page.js
+ M .next/static/chunks/webpack.js
+ M .next/static/css/app/layout.css
+ M .next/static/development/_buildManifest.js
+ M .next/trace
+ M app/components/Header.js
+ M app/globals.css
+ M app/sections/FromHiveToHome.js
+ M app/sections/FromHiveToHome.module.css
+ M app/sections/Hero.js
+?? diff.txt
+?? diff2.txt
+?? public/images/honey_drizzle.png
+?? public/images/honeycomb-bees.jpg
+?? public/images/real_transparent_honey.png
+?? public/images/white_honey.jpg
+?? public/images/white_honey.png
+?? status.txt
+?? status2.txt

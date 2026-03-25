@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useRef } from 'react'
+import Image from 'next/image'
 import { gsap } from '../lib/gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import styles from './FromHiveToHome.module.css'
@@ -92,12 +93,26 @@ const STEPS = [
 
 export default function FromHiveToHome() {
   const sectionRef  = useRef(null)
+  const bannerRef   = useRef(null)
+  const imgRef      = useRef(null)
   const headerRef   = useRef(null)
   const lineRef     = useRef(null)
   const stepsRef    = useRef([])
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
+
+    // ── Banner image parallax (inner moves slower than scroll)
+    gsap.to(imgRef.current, {
+      yPercent: 18,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: bannerRef.current,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true,
+      },
+    })
 
     // ── Header fade up
     gsap.fromTo(
@@ -149,22 +164,24 @@ export default function FromHiveToHome() {
   return (
     <section id="hive-to-home" className={styles.hth} ref={sectionRef}>
 
-      {/* Honeycomb background pattern */}
-      <div className={styles.hth__bg} aria-hidden="true">
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="hcomb" x="0" y="0" width="56" height="64" patternUnits="userSpaceOnUse">
-              <polygon points="28,2 54,16 54,48 28,62 2,48 2,16"
-                fill="none" stroke="rgba(240,165,0,0.07)" strokeWidth="1"/>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#hcomb)"/>
-        </svg>
-      </div>
+      {/* ── Full-bleed honeycomb banner ── */}
+      <div className={styles.hth__banner} ref={bannerRef}>
+        {/* Actual photo — fills the banner, parallax on scroll */}
+        <div className={styles.hth__bannerImgWrap} ref={imgRef}>
+          <Image
+            src="/images/honeycomb-bees.jpg"
+            alt="Bees working on golden honeycomb"
+            fill
+            priority
+            sizes="100vw"
+            className={styles.hth__bannerImg}
+          />
+        </div>
 
-      <div className={styles.hth__inner}>
+        {/* Gradient overlays: dark on edges + fade-down to section bg */}
+        <div className={styles.hth__bannerOverlay} aria-hidden="true" />
 
-        {/* ── Header ── */}
+        {/* Header content sits on top of the image */}
         <div className={styles.hth__header} ref={headerRef}>
           <span className={styles.hth__eyebrow}>The Journey</span>
           <h2 className={styles.hth__title}>From Hive to Home</h2>
@@ -173,6 +190,9 @@ export default function FromHiveToHome() {
             carries the full story of how it was made.
           </p>
         </div>
+      </div>
+
+      <div className={styles.hth__inner}>
 
         {/* ── Timeline ── */}
         <div className={styles.hth__timeline}>
@@ -229,7 +249,7 @@ export default function FromHiveToHome() {
           </a>
         </div>
 
-      </div>
+      </div>{/* hth__inner */}
     </section>
   )
 }
